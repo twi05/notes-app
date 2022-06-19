@@ -6,6 +6,10 @@ const Notes_list = () => {
     <div>
         
         <Note/>
+        <Note/>
+        <Note/>
+        <Note/>
+
     </div>
   )
 }
