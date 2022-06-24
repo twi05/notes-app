@@ -9,7 +9,7 @@ const deleteNote=(id)=>{
 
 
   return (
-    <div className="note">
+    <div className="note" >
       <span>{text}</span>
       <div className="note-footer">
         <small>{date}</small>

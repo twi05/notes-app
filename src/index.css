@@ -11,8 +11,16 @@ code {
 
 .container {
     max-width: 960px;
+    min-height: 100vh;
     margin: 0 auto;
     padding: 0 15px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 .notes-list {
@@ -64,4 +72,33 @@ code {
 .delete-icon{
     cursor: pointer;
 
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    background-color: rgb(242, 223, 223);
+    border-radius: 10px;
+    padding: 5px; 
+    margin-bottom: 1.5em;
+}
+
+.search input{
+    border: none;
+    background-color: rgb(242, 223, 223);
+
+}
+
+.search input:focus{
+    outline: none;
+}
+
+
+.dark-mode{
+    background-color: black;
+   
+}
+
+.dark-mode h1{
+    color: white;
 }
