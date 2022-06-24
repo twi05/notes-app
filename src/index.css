@@ -11,6 +11,7 @@ code {
 
 .container {
     max-width: 960px;
+    min-height: 100vh;
     margin: 0 auto;
     padding: 0 15px;
 }
