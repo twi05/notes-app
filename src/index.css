@@ -16,11 +16,10 @@ code {
     padding: 0 15px;
 }
 
-.header{
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .notes-list {
@@ -69,36 +68,37 @@ code {
     justify-content: space-between;
 }
 
-.delete-icon{
+.delete-icon {
     cursor: pointer;
-
 }
 
-.search{
+.search {
     display: flex;
     align-items: center;
     background-color: rgb(242, 223, 223);
     border-radius: 10px;
-    padding: 5px; 
+    padding: 5px;
     margin-bottom: 1.5em;
 }
 
-.search input{
+.search input {
     border: none;
     background-color: rgb(242, 223, 223);
-
 }
 
-.search input:focus{
+.search input:focus {
     outline: none;
 }
 
-
-.dark-mode{
+.dark-mode {
     background-color: black;
-   
 }
 
-.dark-mode h1{
+.dark-mode h1 {
     color: white;
 }
+
+    .dark-mode .save.toggle {
+        background-color: rgb(50, 48, 48);
+        color: white;
+    }
