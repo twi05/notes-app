@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Notes_list from "./components/Notes_list";
+import NotesList from "./components/Notes_list";
 import { nanoid } from "nanoid";
 import Search from "./components/Search";
 import Header from "./components/Header";
@@ -8,36 +8,48 @@ const App = () => {
   const [searchText, setSearchText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
 
-  const [notes, setNotes] = React.useState([
-    {
-      id: nanoid(),
-      text: " This is my first note",
-      date: "15/04/2014",
-    },
-    {
-      id: nanoid(),
-      text: " This is my second note",
-      date: "15/04/2014",
-    },
-    {
-      id: nanoid(),
-      text: " This is my third note",
-      date: "15/04/2014",
-    },
-  ]);
-
-  useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem("react-notes-data"));
-
-        console.log("saved notes" + JSON.stringify(savedNotes));
+  const getNotes = () => {
+    const date = new Date();
+    let initialNotes = [
+      {
+        id: nanoid(),
+        text: "Your first note.",
+        date: date.toLocaleDateString(),
+      },
+    ];
+    let savedNotes = JSON.parse(localStorage.getItem("react-notes-data"));
+    console.log(savedNotes);
     if (savedNotes) {
-      setNotes(savedNotes);
+      return savedNotes;
+    } else {
+      return initialNotes;
     }
-  }, []);
+  };
+
+  const [notes, setNotes] = React.useState(getNotes());
+  // useEffect(() => {
+  //   const savedNotes = JSON.parse(localStorage.getItem("react-notes-data"));
+
+  //       console.log("saved notes" + JSON.stringify(savedNotes));
+  //   if (savedNotes) {
+  //     setNotes(savedNotes);
+  //   }
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem("react-notes-data", JSON.stringify(notes));
   }, [notes]);
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", !darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    let theme = false;
+    theme = localStorage.getItem("darkMode");
+    console.log("THeme" + theme);
+    setDarkMode(theme);
+  },[]);
 
   const addNote = (text) => {
     const date = new Date();
@@ -59,7 +71,7 @@ const App = () => {
       <div className="container">
         <Header handleToggleDarkMode={setDarkMode} />
         <Search handleSearchNote={setSearchText} />
-        <Notes_list
+        <NotesList
           notes={notes.filter((note) =>
             note.text.toLowerCase().includes(searchText)
           )}
