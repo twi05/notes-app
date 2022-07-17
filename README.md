@@ -1,8 +1,40 @@
-<<<<<<< HEAD
-# notes-app
-Notes App
+
+
+Notes App made by ReactJs
 =======
-# Getting Started with Create React App
+<img src="public/android-chrome-192x192.png"  />
+
+
+An application used to create notes without creating account. Only your local system knows what your notes have😎
+
+## Project Status
+This project is currently in development. 
+Features to be added:
+  Login 
+  Backend with MongoDB
+  Other Variation as anyone can see and write notes as a message passer.
+  
+  
+Features:<br>
+Dark Mode<br>
+Create<br>
+Update<br>
+Delete Note<br>
+
+
+Users can search Notes by keyword.
+
+## Project Screen Shot(s)
+
+#### Example:   
+
+[ PRETEND SCREEN SHOT IS HERE ]
+
+[ PRETEND OTHER SCREEN SHOT IS HERE ]
+
+
+
+A React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
