@@ -3,11 +3,11 @@ import NotesList from "./components/Notes_list";
 import { nanoid } from "nanoid";
 import Search from "./components/Search";
 import Header from "./components/Header";
-
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
-
+  const [text_update, settextUpdate] = React.useState("");
+  let savedNotes;
   const getNotes = () => {
     const date = new Date();
     let initialNotes = [
@@ -17,8 +17,8 @@ const App = () => {
         date: date.toLocaleDateString(),
       },
     ];
-    let savedNotes = JSON.parse(localStorage.getItem("react-notes-data"));
-    console.log(savedNotes);
+    savedNotes = JSON.parse(localStorage.getItem("react-notes-data"));
+    // console.log(savedNotes);
     if (savedNotes) {
       return savedNotes;
     } else {
@@ -27,29 +27,21 @@ const App = () => {
   };
 
   const [notes, setNotes] = React.useState(getNotes());
-  // useEffect(() => {
-  //   const savedNotes = JSON.parse(localStorage.getItem("react-notes-data"));
-
-  //       console.log("saved notes" + JSON.stringify(savedNotes));
-  //   if (savedNotes) {
-  //     setNotes(savedNotes);
-  //   }
-  // }, []);
 
   useEffect(() => {
     localStorage.setItem("react-notes-data", JSON.stringify(notes));
   }, [notes]);
 
   useEffect(() => {
-    localStorage.setItem("darkMode", !darkMode);
+    console.log(darkMode, "DarkMode Changed");
+    localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
   useEffect(() => {
-    let theme = false;
-    theme = localStorage.getItem("darkMode");
-    console.log("THeme" + theme);
+    let theme = localStorage.getItem("darkMode");
+    console.log(theme, "This is theme");
     setDarkMode(theme);
-  },[]);
+  }, []);
 
   const addNote = (text) => {
     const date = new Date();
@@ -59,6 +51,7 @@ const App = () => {
       date: date.toLocaleDateString(),
     };
     setNotes([...notes, newNote]);
+    
   };
 
   const deleteNote = (id) => {
@@ -66,17 +59,30 @@ const App = () => {
     setNotes(newNotes);
   };
 
+  const editNote = (text_recieved,id) => {
+    // console.log(id);
+    //   const found =    savedNotes.find((elem) =>  elem.id === id)
+    //   console.log(found);
+    console.log(text_recieved);
+    settextUpdate(text_recieved);
+
+    deleteNote(id);
+  };
+
   return (
     <div className={`${darkMode && "dark-mode"}  `}>
       <div className="container">
         <Header handleToggleDarkMode={setDarkMode} />
         <Search handleSearchNote={setSearchText} />
+        <h3  className="">Click on note to update!</h3>
         <NotesList
           notes={notes.filter((note) =>
-            note.text.toLowerCase().includes(searchText)
+            note.text.toUpperCase().includes(searchText.toUpperCase())
           )}
           handleAddNote={addNote}
           handleDeleteNote={deleteNote}
+          editNote={editNote}
+          text_update={text_update}
         />
       </div>
     </div>

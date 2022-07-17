@@ -61,6 +61,10 @@ code {
     justify-content: space-between;
     white-space: pre-wrap;
 }
+.note:hover {
+    cursor: pointer;
+
+}
 
 .note-footer {
     display: flex;
@@ -98,7 +102,11 @@ code {
     color: white;
 }
 
-    .dark-mode .save.toggle {
-        background-color: rgb(50, 48, 48);
-        color: white;
-    }
+.dark-mode h3 {
+    color: white;
+}
+
+.dark-mode .save.toggle {
+    background-color: rgb(50, 48, 48);
+    color: white;
+}
