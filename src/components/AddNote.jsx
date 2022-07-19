@@ -17,8 +17,8 @@ const AddNote = ({ handleAddNote, text_update, handleDeleteNote }) => {
   const handleSaveClick = () => {
     if (noteText.trim().length > 0) {
       handleAddNote(noteText);
-      setNoteText("");
       setWordsCount(200);
+      setNoteText("");
     }
   };
 
@@ -27,7 +27,12 @@ const AddNote = ({ handleAddNote, text_update, handleDeleteNote }) => {
     setWordsCount(200 - text_update.length)
   }, [text_update]);
 
-
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && e.shiftKey) {
+      console.log("pressed shift+enter");
+      handleSaveClick();
+    }
+  };
   return (
     <div className="note new">
       <textarea
@@ -35,11 +40,11 @@ const AddNote = ({ handleAddNote, text_update, handleDeleteNote }) => {
         rows="8"
         placeholder="Type to add note here"
         onChange={handleChange}
-        value={noteText}
+        value={noteText}onKeyPress={handleKeyPress}
       ></textarea>
       <div className="note-footer">
         <small>{wordsCount} Remaining</small>
-        <button className="save" onClick={handleSaveClick}>
+        <button className="save" onClick={handleSaveClick}  >
           Save
         </button>
       </div>

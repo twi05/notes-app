@@ -1,21 +1,30 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
-
-const Note = ({ id, text, date, handleDeleteNote ,editNote}) => {
+import { AiFillEdit } from "react-icons/ai";
+const Note = ({ id, text, date, handleDeleteNote, editNote }) => {
   const deleteNote = (id) => {
     handleDeleteNote(id);
   };
 
   return (
-    <div className="note" onClick={() => editNote(text,id)}>
+    <div className="note">
       <span>{text}</span>
       <div className="note-footer">
         <small>{date}</small>
-        <MdDeleteForever
-          className="delete-icon"
-          size="1.3em"
-          onClick={() => deleteNote(id)}
-        />
+        <div>
+          <AiFillEdit
+            className="delete-icon"
+            size="1.3em"
+            onClick={() => {if (window.confirm("Do you want to Edit note?")) editNote(text, id)}}
+          />{" "}
+          <MdDeleteForever
+            className="delete-icon"
+            size="1.3em"
+            onClick={() => {
+              if (window.confirm("Do you want to delete note?")){ deleteNote(id);}
+            }}
+          />
+        </div>
       </div>
     </div>
   );
