@@ -51,7 +51,6 @@ const App = () => {
       date: date.toLocaleDateString(),
     };
     setNotes([...notes, newNote]);
-    
   };
 
   const deleteNote = (id) => {
@@ -59,7 +58,7 @@ const App = () => {
     setNotes(newNotes);
   };
 
-  const editNote = (text_recieved,id) => {
+  const editNote = (text_recieved, id) => {
     // console.log(id);
     //   const found =    savedNotes.find((elem) =>  elem.id === id)
     //   console.log(found);
@@ -74,7 +73,7 @@ const App = () => {
       <div className="container">
         <Header handleToggleDarkMode={setDarkMode} />
         <Search handleSearchNote={setSearchText} />
-        <h3  className="">Click on note to update!</h3>
+        <h3 className="">Press Shift + Enter key to Save Note!</h3>
         <NotesList
           notes={notes.filter((note) =>
             note.text.toUpperCase().includes(searchText.toUpperCase())
