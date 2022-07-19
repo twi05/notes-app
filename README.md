@@ -27,10 +27,9 @@ Users can search Notes by keyword.
 ## Project Screen Shot(s)
 
 #### Example:   
+<img src="public/light_mode_ss.png"  />
+<img src="public/dark_mode_ss.png"  />
 
-[ PRETEND SCREEN SHOT IS HERE ]
-
-[ PRETEND OTHER SCREEN SHOT IS HERE ]
 
 
 
